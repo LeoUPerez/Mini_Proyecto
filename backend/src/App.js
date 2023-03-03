@@ -19,6 +19,6 @@ app.get('/', (req, res)=>{
 })
 
 // Ruta para api de usuario
-// app.use('/api/usuarios', require('./routes/usuario'));
+app.use('/api/usuarios', require('./routes/usuario'));
 
 module.exports = app;
