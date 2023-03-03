@@ -7,9 +7,9 @@ router.route('/')
     .get(ObtenerUsuario)
     .post(CreateUsuario)
 
-router.route('/:id')
-    .get(ObtenerUsua) //*Este ObtenerUsua es en base al ID
-    .delete(DeleteUsuario)
+router.route('/')
+  //*  .get(ObtenerUsua) Este ObtenerUsua es en base al ID
+    // .delete(DeleteUsuario)
     .put(UpdateUsuario)
 
 module.exports = router;
