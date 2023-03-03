@@ -1,6 +1,9 @@
 const jwtv = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const code = "0000";
+var aux = "";
+
 const usuario = {};
-const jwtVerify = "";
 
 const modelo = require('../Models/ModelUsuarios.js');
 
@@ -37,41 +40,80 @@ function jwt(req, res) {
     });
  }
  
-// usuario.ObtenerUsua = async (req, res) =>{
-//     const usuario = await modelo.findById(req.params.id);
-//     res.json(usuario);
-// }
-// usuario.DeleteUsuario = async (req, res) =>{
-//     await modelo.findByIdAndDelete(req.params.id);
-//     res.json({message: "Usuario ha sido eliminao"})
-// }
-usuario.UpdateUsuario = async (req, res) =>{
+usuario.ObtenerUsua = async (req, res) =>{
+    //! El usuario se obtendra mediante el correo
     const {nombre, apellido, password, telefono, correo} = req.body;
     const values = [nombre, apellido, password, telefono, correo];
     
     const usuario = await modelo.find({"correo": correo});
     if (usuario.length > 0) {
 
-        res.json({message: "Usuario actualizao"})
+        SendMail(correo); 
+        aux = correo;
+        res.send(usuario)
     } else {
         res.json({message: "Usuario no encontrado"})
     }
+}
+// usuario.DeleteUsuario = async (req, res) =>{
+//     await modelo.findByIdAndDelete(req.params.id);
+//     res.json({message: "Usuario ha sido eliminao"})
+// }
+usuario.UpdateUsuario = async (req, res) =>{
     
+    const usuario = await modelo.find({"correo": aux});
 
+    const NewUser = await modelo.updateOne(
+        {_id: usuario[0]._id}, { $set:
+            {
+                keyvalidation: usuario[0].keyvalidation,
+                nombre: usuario[0].nombre,
+                apellido: usuario[0].apellido,
+                password: req.body.password,
+                telefono: usuario[0].telefono,
+                correo: usuario[0].correo
+            }
+    });
 
-    // const usuario = await modelo.find({"correo": correo});
-    // res.send(usuario);
-    // console.log(usuario);
+    console.log(NewUser);
+    res.send({mensaje: "Usuario Actualizado"});
 
-    // await modelo.findByIdAndUpdate(req.params.id,{
-    //     nombre,
-    //     apellido,
-    //     edad,
-    //     telefono,
-    //     correo
-    // });
+    aux = "";
 }
 
+//TODO: --IMPORTANTE--    Falta crear clave y crear verificacion    --IMPORTANTE--
+usuario.VerificarCodigo = async (req, res) => {
+    const codeUser = req.body;
+    if (code !== codeUser.code) {
+        res.send({message: "Codigo de verificacion incorrecto"})
+    } else {
+        res.send(codeUser)
+    }
+}
+
+SendMail = async (correo) => {
+
+    // ! Es la configuracion que exige nodemailer para el envio del correo.
+    const confing = {
+        host: "smtp.gmail.com",
+        port: 587,
+        auth: {
+            user: "leo02276@gmail.com",
+            pass: "wwyqobhdvwohgdep"
+        }
+    }
+    const transport = nodemailer.createTransport(confing);
+
+    const mensaje = {
+        from : "leo02276@gmail.com",
+        to : correo,
+        subject : "Código de verificación",
+        text: `Su código de verificacón es: ${code}`
+    }
+    const info = await transport.sendMail(mensaje);
+
+    console.log(info);
+}
 
 
 module.exports = usuario;
