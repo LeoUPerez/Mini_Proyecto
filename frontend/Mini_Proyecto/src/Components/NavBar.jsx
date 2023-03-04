@@ -22,7 +22,7 @@ const NavBar = () => {
   }
 
   return (
-    <section className="flex justify-center items-center gap-7 w-full h-full font-light">
+    <section className=" w-2/4 h-full flex justify-center items-center gap-7 bg-gray-100 font-light rounded-xl pb-2">
       <Link
         id="prueba"
         onMouseEnter={selector_in}
