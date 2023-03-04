@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from 'react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-        <h1 class="text-3xl font-bold underline">
-          Hello world!
-        </h1>
+        <BrowserRouter>
+          <Routes>
+            {/* <Route path='' element={} /> */}
+          </Routes>
+        </BrowserRouter>
     </div>
   )
 }
