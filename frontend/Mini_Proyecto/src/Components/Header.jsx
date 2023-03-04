@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import NavBar from "./NavBar";
 
 const Header = () => {
+
+
   return (
-    <div>Header</div>
-  )
-}
+    <section className="w-2/4 h-4/5 bg-gray-100 rounded-xl pb-3">
+      <NavBar/>
+    </section>
+  );
+};
 
 export default Header;
