@@ -27,7 +27,7 @@ const NavBar = () => {
         id="prueba"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center"
+        className="hover:0 transition-all duration-300 flex items-center flex-col justify-center"
       >
         <div id="link1" className="w-1.5 h-1.5 rounded-full"></div>
         Home
