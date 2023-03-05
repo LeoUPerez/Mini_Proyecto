@@ -22,12 +22,12 @@ const NavBar = () => {
   }
 
   return (
-    <section className=" w-2/4 h-full flex justify-center items-center gap-7 bg-gray-100 font-light rounded-xl pb-2">
+    <nav className=" w-full h-full flex justify-center items-center gap-7 bg-gray-200 font-light rounded-xl pb-2 relative max-md:w-36 max-md:gap-1.5 max-md:flex-wrap">
       <Link
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center"
+        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center max-md:w-64"
       >
         <div id="Link1" className="w-1.5 h-1.5 rounded-full"></div>
         Home
@@ -65,7 +65,7 @@ const NavBar = () => {
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center"
+        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center "
       >
         <div id="Link5" className="w-1.5 h-1.5 rounded-full"></div>
         Sobre Nosotros
@@ -74,12 +74,13 @@ const NavBar = () => {
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center"
+        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center "
       >
         <div id="Link6" className="w-1.5 h-1.5 rounded-full"></div>
         Contactos
       </Link>
-    </section>
+
+    </nav>
   );
 };
 
