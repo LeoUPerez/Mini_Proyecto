@@ -20,8 +20,8 @@ const Home = () => {
         let btns = document.getElementById('abrir');
 
         hd.className = 'w-full h-14 flex items-center';
-        nv.className= ' relative opacity-100 h-12 w-full text-base max-md:opacity-0 max-md:text-xs max-md:w-2/5';
-        btns.className = ' w-8 h-8 text-base opacity-0 max-md:opacity-100';
+        nv.className= 'relative opacity-100 h-12 w-full text-base max-md:opacity-0 max-md:text-xs max-md:w-2/5';
+        btns.className = 'w-8 h-8 text-base opacity-0 max-md:opacity-100';
     }
   return (
     <section>
