@@ -22,12 +22,12 @@ const NavBar = () => {
   }
 
   return (
-    <nav className=" w-full h-full flex justify-center items-center gap-7 bg-gray-200 font-light rounded-xl pb-2 relative max-md:w-36 max-md:gap-1.5 max-md:flex-wrap">
+    <nav className=" w-full h-full flex justify-center items-center gap-4 bg-gray-200 font-light rounded-xl pb-2 relative max-md:w-36 max-md:gap-1.5 max-md:flex-wrap">
       <Link
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center max-md:w-64"
+        className=" w-20 transition-all duration-300 flex items-center flex-col justify-center max-md:w-64 hover:text-blue-600"
       >
         <div id="Link1" className="w-1.5 h-1.5 rounded-full"></div>
         Home
@@ -56,28 +56,51 @@ const NavBar = () => {
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center"
+        className=" transition-all duration-300 w-20 flex items-center flex-col justify-center hover:text-blue-600"
       >
         <div id="Link4" className="w-1.5 h-1.5 rounded-full"></div>
-        Servicios
+        Services
       </Link>
       <Link
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center "
+        className=" transition-all w-20 duration-300 flex items-center flex-col justify-center hover:text-blue-600"
       >
         <div id="Link5" className="w-1.5 h-1.5 rounded-full"></div>
-        Sobre Nosotros
+        About us
       </Link>
       <Link
         id="Link"
         onMouseEnter={selector_in}
         onMouseOut={selector_out}
-        className="hover:text-blue-600 transition-all duration-300 flex items-center flex-col justify-center "
+        className=" w-20 transition-all duration-300 flex items-center flex-col justify-center hover:text-blue-600"
       >
         <div id="Link6" className="w-1.5 h-1.5 rounded-full"></div>
-        Contactos
+        Contacts
+      </Link>
+      <Link
+      to={'/login'}
+        // onMouseEnter={selector_in}
+        // onMouseOut={selector_out}
+        className=" transition-all duration-300 w-20 flex items-center flex-col justify-center hover:text-blue-600"
+      >
+        <div id="Link7" className="w-1.5 h-1.5 rounded-full"></div>
+          {/* <Link className='hover:text-blue-600 transition-all duration-300' to={'/login'}> */}
+                    {/*Funcion IIFE */}
+                    {(() => {
+                        if (sessionStorage.length !== 0) {
+                        return (
+                            <span className="fa-solid fa-user font-light text-xs flex gap-1 tracking-widest">{sessionStorage.getItem('Usuario')}</span>
+                        );
+                        } else{
+                        return (
+                            <i className="fa-solid fa-user font-light text-xs flex gap-1 tracking-widest"><p>Login</p></i>
+                        );
+                        } 
+                    })()}{" "}
+                    {/*Funcion IIFE */}
+            {/* </Link> */}
       </Link>
 
     </nav>
