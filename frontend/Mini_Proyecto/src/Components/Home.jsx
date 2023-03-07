@@ -11,7 +11,7 @@ const Home = () => {
         let btns = document.getElementById('abrir');
 
         hd.className = 'w-full h-10 flex items-center pt-4';
-        nv.className= 'opacity-100 max-md:text-base max-md:pt-28';
+        nv.className= 'opacity-100 max-md:text-base max-md:pt-32';
         btns.className = 'w-8 h-8 text-xs opacity-0 max-md:opacity-0';
     }
     function Cerrar() {
@@ -30,7 +30,7 @@ const Home = () => {
                 <Header/>
                 <div className='h-12 relative w-full max-md:w-2/5 max-md:opacity-0 max-md:h-full max-md:text-xs' id='navbar'>
                   <NavBar/>
-                 <button onClick={Cerrar} className="absolute top-1 p-1 bg-red-500 flex justify-center items-center rounded-full text-sm w-6 h-6 opacity-0 max-md:opacity-100 max-md:mt-3 max-md:ml-1">X</button>
+                 <button onClick={Cerrar} className="absolute top-1 p-1 bg-red-500 flex justify-center items-center rounded-full text-sm w-6 h-6 opacity-0 max-md:opacity-100 max-md:ml-1 max-md:mt-1">X</button>
                 </div>
                 <button id='abrir' onClick={Abrir} className=" w-8 h-8 text-base opacity-0 max-md:opacity-100"><i className="fa-solid fa-bars"></i></button>
 

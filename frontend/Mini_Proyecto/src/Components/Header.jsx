@@ -12,21 +12,6 @@ const Header = ({Onclick}) => {
       </div>
     </section>
   );
-          {/*<Link className='hover:text-blue-600 transition-all duration-300' to={'/login'}>
-                    Funcion IIFE */}
-                    {/* {(() => {
-                        if (sessionStorage.length !== 0) {
-                        return (
-                            <span>{sessionStorage.getItem('Usuario')}</span>
-                        );
-                        } else{
-                        return (
-                            <i className="fa-solid fa-user"></i>
-                        );
-                        } 
-                    })()}{" "} */}
-                    {/*Funcion IIFE 
-            </Link>*/}
 };
 
 export default Header;

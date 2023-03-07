@@ -13,7 +13,8 @@ usuario.ObtenerUsuario = async (req, res) => {
 
   const usuario = await modelo.find({ nombre: username, password: password });
   if (usuario.length > 0) {
-    res.send(usuario[0].keyvalidation);
+    let jwt = usuario[0].keyvalidation;
+    res.send(jwt);
   } else {
     res.json({ message: "Usuario no encontrado" });
   }
@@ -24,10 +25,10 @@ usuario.CreateUsuario = async (req, res) => {
 };
 function jwt(req, res) {
   jwtv.sign({ user: modelo }, "secretkey", (err, token) => {
-    const { nombre, apellido, password, telefono, correo } = req.body;
+    const { username, apellido, password, telefono, correo } = req.body;
     const NuevoUsuario = new modelo({
       keyvalidation: token,
-      nombre: nombre,
+      nombre: username,
       apellido: apellido,
       password: password,
       telefono: telefono,
@@ -92,12 +93,13 @@ usuario.VerificarCodigo = async (req, res) => {
 
 SendMail = async (correo) => {
   // ! Es la configuracion que exige nodemailer para el envio del correo.
+  // * Se debe crear la clave temporal en google para las aplicaciones, además de que se debe asignar la ip en uso en mongoDB atlas a la hora de hacer peticiones al backend
   const confing = {
     host: "smtp.gmail.com",
     port: 587,
     auth: {
       user: "leo02276@gmail.com",
-      pass: "wwyqobhdvwohgdep",
+      pass: "xkdssayknvyngdin",
     },
   };
   const transport = nodemailer.createTransport(confing);
@@ -110,7 +112,7 @@ SendMail = async (correo) => {
   };
   const info = await transport.sendMail(mensaje);
 
-  console.log(info);
+  // console.log(info);
 };
 
 module.exports = usuario;

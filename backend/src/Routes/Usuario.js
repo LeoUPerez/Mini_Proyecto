@@ -4,12 +4,15 @@ const router = Router();
 const { ObtenerUsuario, CreateUsuario, ObtenerUsua, DeleteUsuario, UpdateUsuario, VerificarCodigo } = require('../Controller/Usuarios.controller.js')
 
 router.route('/')
-    .get(ObtenerUsuario)
+    .post(ObtenerUsuario)
+    .put(UpdateUsuario)
+    // .post(CreateUsuario)
+
+router.route('/:newuser')
     .post(CreateUsuario)
 
-router.route('/')
+// router.route('/')
     // .delete(DeleteUsuario)
-    .put(UpdateUsuario)
 
 router.route('/:code')
     .put(VerificarCodigo)
